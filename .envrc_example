@@ -1,0 +1,141 @@
+#& THE KEY TO A REPRODUCABLE ENVIRONMENT IS TO -->
+use flake
+
+#& PACKER DEFAULTS
+#*# Ansible Credentials - #FIXME: move these to VAULT
+export PKR_VAR_ansible_username=""
+export PKR_VAR_ansible_key=""
+#*# Build creds #FIXME: move these to VAULT
+export PKR_VAR_build_username=""
+export PKR_VAR_build_password=""
+export PKR_VAR_build_password_encrypted=""
+export PKR_VAR_build_key=""
+#*# VM Settings - TODO: move these to PACKER REPO
+# https://github.com/vmware-samples/packer-examples-for-vsphere/discussions/32
+export PKR_VAR_common_vm_version=19
+export PKR_VAR_common_tools_upgrade_policy=true
+export PKR_VAR_common_remove_cdrom=true
+#*# Template and Content Library Settings - TODO: move these to PACKER REPO
+export PKR_VAR_common_template_conversion=false
+export PKR_VAR_common_content_library_name=""
+export PKR_VAR_common_content_library_ovf=true
+export PKR_VAR_common_content_library_destroy=true
+export PKR_VAR_common_content_library_skip_export=false
+#*# OVF Export Settings - TODO: move these to PACKER REPO
+export PKR_VAR_common_ovf_export_enabled=false
+export PKR_VAR_common_ovf_export_overwrite=true
+#*# Removable Media Settings - TODO: move these to PACKER REPO
+export PKR_VAR_common_iso_datastore=""
+#*# Boot and Provisioning Settings TODO: move these to PACKER REPO
+export PKR_VAR_common_data_source=""
+# common_data_source      =
+# export PKR_VAR_common_http_ip=null
+export PKR_VAR_common_http_port_min=8000
+export PKR_VAR_common_http_port_max=8099
+export PKR_VAR_common_ip_wait_timeout=""
+export PKR_VAR_common_shutdown_timeout=""
+#*# HCP Packer TODO: move these to PACKER REPO
+export PKR_VAR_common_hcp_packer_registry_enabled=false
+#*# LDAP Variables #FIXME: move these to VAULT
+export PKR_VAR_ldap_uri=""
+export PKR_VAR_ldap_default_bind_dn=""
+export PKR_VAR_ldap_default_auth_tok=""
+export PKR_VAR_ldap_search_base=""
+export PKR_VAR_ldap_user_search_base=""
+export PKR_VAR_ldap_access_filter=""
+export PKR_VAR_ldap_domain=""
+#*# vSphere Credentials - #FIXME: move these to VAULT
+export PKR_VAR_vsphere_endpoint=""
+export PKR_VAR_vsphere_username=""
+export PKR_VAR_vsphere_password=""
+export PKR_VAR_vsphere_insecure_connection=true
+#*# vSphere Settings - TODO: move these to PACKER REPO
+export PKR_VAR_vsphere_datacenter=""
+export PKR_VAR_vsphere_cluster=""
+export PKR_VAR_vsphere_datastore=""
+export PKR_VAR_vsphere_network=""
+export PKR_VAR_vsphere_folder=""
+
+#& TERRAFORM DEFAULTS
+#*# -  #FIXME: move these to VAULT
+export TF_VAR_vsphere_user=""
+export TF_VAR_vsphere_password=""
+export TF_VAR_local_admin_password=""
+#export TF_VAR_domain_admin_user="" # This domain account can join machines to SIG, GB and OY
+export TF_VAR_domain_admin_password=""                 # This domain account can join machines to SIG, GB and OY
+export TF_VAR_content_library_password=""
+
+#& GOVC DEFAULTS
+#*# -  #FIXME: move these to VAULT
+export GOVC_DATACENTER=""
+export GOVC_URL=""
+export GOVC_USERNAME=""
+export GOVC_PASSWORD=""
+export GOVC_INSECURE=""
+
+#& VAULT DEFAULTS
+#*# -  #FIXME: move these to VAULT
+export VAULT_TOKEN=""
+export GOOGLE_APPLICATION_CREDENTIALS=""
+#! define this in ~/.bashrc using: 
+# cat ~/.bashrc
+## ...
+## vault kv get -format="" > ~/.secrets/vault-secret.json
+
+
+#& ANSIBLE DEFAULTS
+#*# - TODO: move these to ANSIBLE REPO
+export ANSIBLE_CONFIG=ansible.cfg
+
+# export SSH_U=""
+# export SSH_K_FILE=""
+
+#*# -  #FIXME: move these to VAULT
+export SSH_U=""
+export SSH_K_FILE=""
+
+#*# -  #FIXME: move these to VAULT
+export GRAFANA_PASSWORD=""
+export SLACK_WEBHOOK=""
+
+#*# -  #FIXME: should not use personal creds / use service cred and move those to VAULT
+export SIG_DOMAIN_U=""                         # FIXME: replace this with your account
+export SIG_DOMAIN_P=""                           # FIXME: replace this with your account
+
+export SPORTING_DOMAIN_U=""          # FIXME: replace this with your account
+export SPORTING_DOMAIN_P=""                      # FIXME: replace this with your account
+
+export GB_SPORTING_DOMAIN_U=""    # FIXME: replace this with your account
+export GB_SPORTING_DOMAIN_P=""                   # FIXME: replace this with your account
+
+# export SIG_DOMAIN_U=""
+# export SIG_DOMAIN_P=""
+
+# export SPORTING_DOMAIN_U=""
+# export SPORTING_DOMAIN_P=""
+
+# export GB_SPORTING_DOMAIN_U=""
+# export GB_SPORTING_DOMAIN_P=""
+
+#*# -  #FIXME: move these to VAULT
+export VSPHERE_USERNAME=""
+export VSPHERE_PASSWORD=""
+export VSPHERE_HOST=""
+export VSPHERE_IGNORE_SSL=TRUE
+
+#*# -  #FIXME: move these to VAULT
+export OCTOPUS_API_KEY=""
+export OCTOPUS_THUMBPRINT=""
+
+#*# -  #FIXME: move these to VAULT
+export LOCAL_ADMIN_U=""
+export LOCAL_ADMIN_P=""
+
+#& LDAP DEFAULTS
+#*# -  #FIXME: move these to VAULT
+export LDAP_URI=""
+export LDAP_DEFAULT_BIND_DN=""
+export LDAP_DEFAULT_AUTHTOK=""
+export LDAP_SEARCH_BASE=""
+export LDAP_USER_SEARCH_BASE=""
+export LDAP_ACCESS_FILTER=""
