@@ -1,5 +1,10 @@
+#!
+#! ALWAYS put sensitive variables in single or double quotes!
+#!
+
 #& THE KEY TO A REPRODUCABLE ENVIRONMENT IS TO -->
 use flake
+export LC_ALL=C.UTF-8
 
 #& PACKER DEFAULTS
 #*# Ansible Credentials - #FIXME: move these to VAULT
@@ -76,6 +81,7 @@ export GOVC_INSECURE=""
 #& VAULT DEFAULTS
 #*# -  #FIXME: move these to VAULT
 export VAULT_TOKEN=""
+export VAULT_ADDR=""
 export GOOGLE_APPLICATION_CREDENTIALS=""
 #! define this in ~/.bashrc using: 
 # cat ~/.bashrc

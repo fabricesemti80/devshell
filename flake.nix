@@ -56,8 +56,7 @@
             inherit system;
             config.allowUnfree = true; # BSL2... Hashicorp...
             config.permittedInsecurePackages = [
-                "python311Packages.kerberos"
-                "python311Packages.pywinrm"
+                "python3.11-kerberos-1.3.1"
               ];
             overlays = [ devshell.overlays.default gomod2nix.overlays.default ];
           };
@@ -68,7 +67,7 @@
             env = [                
                 { 
                   # non-secret ENV VARS go here -->
-                    name = "VAULT_ADDR"; value = "https://vault.sportingsolutions.com"; 
+                    name = "SECRET"; value = "blabla"; 
                 }
             ];
 
@@ -88,6 +87,8 @@
                 nodejs # Needed for aws-azure-login
                 packer # Template building automation
                 pre-commit # Code valudation upon commit
+                python311Packages.kerberos # KERBEROS authentication for Ansible to communicate with domain-joined Windows hosts
+                python311Packages.pywinrm # Allow Ansible to manage Windows-hosts                
                 sshpass # For those rare cases when SSH is used with password 
                 terraform # Infrastructure deployment automation
                 terragrunt # Wrapper for Terraform
@@ -106,14 +107,19 @@
               #   help = "build and run the project binary";
               # }
               {
-                name = "Time";
+                name = "time";
                 command = "date";
                 help = "print the time";
               }
               {
-                name = "MakeExample";
+                name = "makeExample";
                 command = "./sanitize_envrc.sh";
                 help = "take the current .envrc in this folder and generate a version with the secrets removed [for version control]";
+              } 
+              {
+                name = "nixGC";
+                command = "nix-collect-garbage --delete-old";
+                help = "deal with overgrown nix store";
               }        
             ];
           };
